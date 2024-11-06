@@ -1,10 +1,15 @@
 import { useState } from 'react'
-import MyBadges from './components/MyBadges'
+import TaskSection from './components/TaskSection';
 import Header from './components/Header'
 import Footer from './components/Footer'
+import ProfileDetails from './components/ProfileDetails';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [profilePage, setProfilePage] = useState(0);
+
+  const [taskPage, setTaskPage] = useState(0);
+
+  const [activeTaskBtn, setActiveTaskBtn] = useState(0);
 
   return (
     <>
@@ -43,69 +48,52 @@ function App() {
               <hr/>
 
               <div className="slider">
-                <div className="profile-info">
-                    <div className='box level'>
-                        <div className="outline-box">Level 29</div>
-                        <div className="progress-description">
-                            Let's earn <img className='sm-icon' src='points-icon.png'/> 3,000 more to level up!
-                        </div>
-                        <div className="outline-box">Level 30</div>
 
-                        <div className="progress-bar"><span>40%</span></div>
-                    </div>
+                <ProfileDetails page={profilePage}></ProfileDetails>
 
-                    <div className="box badge-collection">
-                        <div className="collection-item">
-                            <img src='public/badge/badge3.png'/>
-                        </div>
-                        <div className="collection-item">
-                            <img src='public/badge/badge4.png'/>
-                        </div>
-                        <div className="collection-item">
-                            <img src='public/badge/add-badge.png'/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="box profile-details">
-                    <div className="item">
-                        <h4>Joined date</h4>
-                        <p>2024/07.30 10:00:00</p>
-                    </div>
-                    <div className="item">
-                        <img className="md-icon" src="public/x-logo-icon.png"/>
-                        <div>
-                            <p>@vuthithanh1994</p>
-                            <img  className="sm-icon" src="public/extend-icon.png"/>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <h4>Referer</h4>
-                        <div>
-                            <p>0xE74...b6e3</p>
-                            <img className="sm-icon" src="public/copy-icon.png"/>
-                            <img className="sm-icon" src="public/extend-icon.png"/>
-                        </div>
-                    </div>
-                    <div className="item">
-                        <img className="md-icon" src="public/discord-logo-icon.png"/>
-                        <p>Not connected</p>
-                    </div>
-
+                <div className="slider-buttons">
+                    <button className="active" onClick={(e) => {
+                        setProfilePage(0);
+                        if (!e.target.classList.contains("active")) {
+                            e.target.classList.add("active");
+                        }
+                        const secondButton = document.querySelector(".slider-buttons").lastChild;
+                        if (secondButton.classList.contains("active")) {
+                            secondButton.classList.remove("active");
+                        }
+                    }}></button>
+                    <button onClick={(e) => {
+                        setProfilePage(1);
+                        if (!e.target.classList.contains("active")) {
+                            e.target.classList.add("active");
+                        }
+                        const firstButton = document.querySelector(".slider-buttons").firstChild;
+                        if (firstButton.classList.contains("active")) {
+                            firstButton.classList.remove("active");
+                        }
+                    }}></button>
                 </div>
               </div>
             </section>
 
             <section className="container tasks">
-              <nav>
-                  <ul>
-                      <li>My Badges<img className="sm-icon" src="public/question-icon.png"/></li>
-                      <li>Friend List</li>
-                      <li>Point History</li>
+                  <ul className="task-buttons">
+                      <li className={activeTaskBtn === 0 ? "active-button" : ""} onClick={() => {
+                        setActiveTaskBtn(0);
+                        setTaskPage(0);
+                      }}>My Badges<img className="sm-icon" src="public/question-icon.png"/>
+                      </li>
+                      <li className={activeTaskBtn === 1 ? "active-button" : ""} onClick={() => {
+                        setActiveTaskBtn(1);
+                        setTaskPage(1);
+                      }}>Friend List</li>
+                      <li className={activeTaskBtn === 2 ? "active-button" : ""} onClick={() => {
+                        setActiveTaskBtn(2);
+                        setTaskPage(2);
+                      }}>Point History</li>
                   </ul>
-              </nav>
 
-              <MyBadges></MyBadges>
+              <TaskSection page={taskPage}></TaskSection>
             </section>
         </section>
 

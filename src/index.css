@@ -196,13 +196,38 @@ hr {
   width: 100%;
 }
 
+.slider-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-buttons button {
+  width: 30px;
+  height: 6px;
+  border-width: 0;
+  border-radius: 100px;
+}
+
+.slider-buttons button:hover {
+  cursor: pointer;
+}
+
+.slider-buttons .active {
+  width: 50px;
+  background-color: #00AEEB;
+}
+
 /* PROFILE-INFO */
-.slider .profile-info {
+.slider .profile-progress {
+  margin-top: 10px;
   display: flex;
   gap: 20px;
 }
 
-.profile-info .level {
+.profile-progress .level {
   flex-grow: 4;
   display: grid;
   grid-template-columns: auto 4fr auto;
@@ -212,15 +237,15 @@ hr {
   align-items: center;
 }
 
-.profile-info .level .progress-description {
+.profile-progress .level .progress-description {
   text-align: center;
 }
 
-.profile-info .level .progress-description img {
+.profile-progress .level .progress-description img {
   vertical-align: top;
 }
 
-.profile-info .level .progress-bar {
+.profile-progress .level .progress-bar {
   position: relative;
   grid-column: 1 / -1;
   background-color: #F3F4F5;
@@ -246,7 +271,7 @@ hr {
   height: 100%;
 }
 
-.profile-info .badge-collection {
+.profile-progress .badge-collection {
   flex-grow: 1;
   display: flex;
   justify-content: space-between;
@@ -254,12 +279,23 @@ hr {
   gap: 40px;
 }
 
-.profile-info .badge-collection img {
+.badge-collection .collection-item {
+  position: relative;
+}
+
+.collection-item .badge-action {
+  width: 24px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+.badge-collection img {
   max-height: 60px;
 }
 
 .slider .profile-details {
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 30px 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -299,7 +335,7 @@ hr {
 
 /* =========== TASKS SECTION ===========*/
 
-section.tasks nav ul {
+section.tasks ul {
   list-style: none;
   display: flex;
   justify-content: flex-start;
@@ -319,7 +355,11 @@ section.tasks nav ul {
   text-align: center;
 }
 
-.tasks ul li:active {
+.tasks ul li:hover {
+  cursor: pointer;
+}
+
+.tasks ul .active-button {
   background-color: #00AEEB1A;
   color: #00AEEB;
 }
@@ -363,7 +403,7 @@ section.tasks nav ul {
   align-items: center;
 }
 
-.badge-item .badge-flag {
+.badge-flag {
   height: 37px;
   position: absolute;
   right: 10px;
@@ -378,7 +418,7 @@ section.tasks nav ul {
 }
 
 .badge-item .badge-img {
-  max-width: 30%;
+  max-width: 35%;
   height: auto;
 }
 
@@ -429,6 +469,7 @@ footer .left {
 }
 
 footer .left p {
+  margin-top: 5px;
   font-weight: 300;
 }
 
