@@ -2,9 +2,13 @@ import Points from "./Points";
 import Table from "./Table";
 
 export default function PointHistory(props) {
-    const { data, itemsPerPage, getCurrentItems, index } = props;
+    const { data, itemsPerPage, getCurrentItems, index, handleSort } = props;
 
     const currentItems = getCurrentItems(data, itemsPerPage);
+
+    const handleKeyToSort = (key) => {
+        handleSort(data, key);
+    }
 
     return (
         <>
@@ -44,7 +48,7 @@ export default function PointHistory(props) {
                 </div>
             </div>
 
-            <Table data={currentItems} index={index}></Table>
+            <Table data={currentItems} index={index} handleKeyToSort={handleKeyToSort}></Table>
         </>
     )
 }

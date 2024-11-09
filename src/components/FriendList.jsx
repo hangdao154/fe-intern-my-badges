@@ -2,12 +2,13 @@ import Points from "./Points"
 import Table from "./Table";
 
 export default function FriendList(props) {
-    const { data, itemsPerPage, getCurrentItems, index } = props;
+    const { data, itemsPerPage, getCurrentItems, index, handleSort } = props;
 
     const currentItems = getCurrentItems(data, itemsPerPage);
 
     const handleKeyToSort = (key) => {
-        handleSort(key, data);
+        handleSort(data, key);
+        console.log(data);
     }
 
     return (

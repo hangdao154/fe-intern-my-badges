@@ -9,14 +9,6 @@ export default function TaskSection(props) {
     const { page } = props;
 
     /*============== Test data ==============*/
-    const friend = {
-        walletAddress: "0xE74...b6e3",
-        joinedDate: new Date(),
-        level: 50,
-        earnedPoints: 100000,
-        refereeCount: 100000,
-        yourRefereeRewards: 100000
-    }
     const transaction = {
         transactionDate: new Date(),
         taskName: "Authorise X(Twitter) Account",
@@ -30,14 +22,100 @@ export default function TaskSection(props) {
         flag: "public/badge-flag/saved-icon.png",
         status: "owned"
     }
-    const friendL = [], transL = [], badgeL = [];
+    const friendL = [{
+        walletAddress: "B",
+        joinedDate: new Date(),
+        level: 90,
+        earnedPoints: 20000000,
+        refereeCount: 15000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "A",
+        joinedDate: new Date(),
+        level: 60,
+        earnedPoints: 100000,
+        refereeCount: 200000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "D",
+        joinedDate: new Date(),
+        level: 70,
+        earnedPoints: 100000,
+        refereeCount: 100000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "B",
+        joinedDate: new Date(),
+        level: 90,
+        earnedPoints: 20000000,
+        refereeCount: 15000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "A",
+        joinedDate: new Date(),
+        level: 60,
+        earnedPoints: 100000,
+        refereeCount: 200000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "D",
+        joinedDate: new Date(),
+        level: 70,
+        earnedPoints: 100000,
+        refereeCount: 100000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "B",
+        joinedDate: new Date(),
+        level: 90,
+        earnedPoints: 20000000,
+        refereeCount: 15000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "A",
+        joinedDate: new Date(),
+        level: 60,
+        earnedPoints: 100000,
+        refereeCount: 200000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "D",
+        joinedDate: new Date(),
+        level: 70,
+        earnedPoints: 100000,
+        refereeCount: 100000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "B",
+        joinedDate: new Date(),
+        level: 90,
+        earnedPoints: 20000000,
+        refereeCount: 15000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "A",
+        joinedDate: new Date(),
+        level: 60,
+        earnedPoints: 100000,
+        refereeCount: 200000,
+        yourRefereeRewards: 100000
+    }, {
+        walletAddress: "D",
+        joinedDate: new Date(),
+        level: 70,
+        earnedPoints: 100000,
+        refereeCount: 100000,
+        yourRefereeRewards: 100000
+    }];
+    
+    const transL = [], badgeL = [];
     for (let i = 0; i < 25; i++) { 
-        friendL.push(friend);
         transL.push(transaction)
         badgeL.push(badge);
     }
-
     /*========================================*/
+
+
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -71,7 +149,7 @@ export default function TaskSection(props) {
     }
 
     const handleSort = (data, key) => {
-        data.sort(a[key] > b[key]);
+        data.sort((a, b) => a[key] - b[key]);
     }
 
     switch (page) {
@@ -79,7 +157,7 @@ export default function TaskSection(props) {
             const totalPages = Math.ceil(friendL.length / itemsPerPage);
             return (
                 <>
-                    <FriendList data={friendL} itemsPerPage={itemsPerPage} index={startIndex} getCurrentItems={getCurrentItems}></FriendList>
+                    <FriendList data={friendL} itemsPerPage={itemsPerPage} index={startIndex} getCurrentItems={getCurrentItems} handleSort={handleSort}></FriendList>
                     <div className="pagination-container">
                         <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
                         <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
@@ -92,7 +170,7 @@ export default function TaskSection(props) {
             const totalPages = Math.ceil(transL.length / itemsPerPage);
             return (
                 <>
-                    <PointHistory data={transL} itemsPerPage={itemsPerPage} getCurrentItems={getCurrentItems} index={startIndex}></PointHistory>
+                    <PointHistory data={transL} itemsPerPage={itemsPerPage} getCurrentItems={getCurrentItems} index={startIndex} handleSort={handleSort}></PointHistory>
                     <div className="pagination-container">
                         <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
                         <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
