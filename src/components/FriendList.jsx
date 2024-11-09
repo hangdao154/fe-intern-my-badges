@@ -2,26 +2,29 @@ import Points from "./Points"
 import Table from "./Table";
 
 export default function FriendList(props) {
-    const { data } = props;
+    const { data, itemsPerPage, getCurrentItems, index } = props;
 
-    const columns = Object.keys(data[0]);
-    let index = 0;
+    const currentItems = getCurrentItems(data, itemsPerPage);
+
+    const handleKeyToSort = (key) => {
+        handleSort(key, data);
+    }
 
     return (
         <>
             <div className="settings">
                 <div className="filter-section">
                     <div className="search-box">
-                        <img/>
+                        <img className="sm-icon inline-icon" src="public/search.png"/>
                         <input placeholder="Search by wallet address"/>
                     </div>
-                    <div>
+                    <div className="date-box">
                         <input type="text" placeholder="Joined Date" onFocus={(e) => {
                             e.target.type="date"
                         }}/>
                     </div>
                     <p>to</p>
-                    <div>
+                    <div className="date-box">
                         <input type="text" placeholder="Joined Date" onFocus={(e) => {
                             e.target.type="date"
                         }}/>
@@ -42,7 +45,7 @@ export default function FriendList(props) {
                 </div>
             </div>
             
-            <Table data={data}></Table>
+            <Table data={currentItems} index={index} handleKeyToSort={handleKeyToSort}></Table>
         </>
     )
 }

@@ -1,7 +1,15 @@
-import React from 'react'
+import { React, useState } from 'react'
 import BadgeItem from './BadgeItem'
+import Pagination from './PageNav'
 
-export default function MyBadges() {
+export default function MyBadges(props) {
+    const {data, getCurrentItems, itemsPerPage, index, handleChangeItemsPerPage} = props;
+
+    handleChangeItemsPerPage(12);
+    const currentItems = getCurrentItems(data, itemsPerPage);
+    
+    let startIndex = index;
+
     return (
         <>
             <div className="filter-section">
@@ -15,18 +23,10 @@ export default function MyBadges() {
             </div>
 
             <div className="badges-container">
-                <BadgeItem badgeImg="public/badge/badge1.png" flag="public/badge-flag/saved-icon.png" status="owned"></BadgeItem>
-                <BadgeItem badgeImg="public/badge/badge2.png" flag="public/badge-flag/plus-icon.png" status="owned"></BadgeItem>
-                <BadgeItem badgeImg="public/badge/badge1.png" flag="public/badge-flag/saved-icon.png" status="claimable"></BadgeItem>
-                <BadgeItem badgeImg="public/badge/badge2.png" flag="public/badge-flag/plus-icon.png" status="yet-claimable"></BadgeItem>
-                <BadgeItem badgeImg="public/badge/badge1.png" flag="public/badge-flag/saved-icon.png" status="owned"></BadgeItem>
-                <BadgeItem badgeImg="public/badge/badge2.png" flag="public/badge-flag/plus-icon.png" status="owned"></BadgeItem>
-                <BadgeItem badgeImg="public/badge/badge1.png" flag="public/badge-flag/saved-icon.png" status="claimable"></BadgeItem>
-                <BadgeItem badgeImg="public/badge/badge2.png" flag="public/badge-flag/plus-icon.png" status="yet-claimable"></BadgeItem>
+                { currentItems.map(item => (
+                    <BadgeItem key={startIndex++} badgeImg={item.badgeImg} flag={item.flag} status={item.status}></BadgeItem>
+                ))}
             </div>
-
-            <div className="pagination"></div>
-
         </>
     )
 }

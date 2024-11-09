@@ -5,11 +5,11 @@ export default function ProfileDetails(props) {
         return (
             <div className="profile-progress">
                 <div className='box level'>
-                    <div className="outline-box">Level 29</div>
+                    <div className="curr-level outline-box">Level 29</div>
                     <div className="progress-description">
                         Let's earn <img className='sm-icon' src='points-icon.png'/> 3,000 more to level up!
                     </div>
-                    <div className="outline-box">Level 30</div>
+                    <div className="next-level outline-box">Level 30</div>
     
                     <div className="progress-bar"><span>40%</span></div>
                 </div>

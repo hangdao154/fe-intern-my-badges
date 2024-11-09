@@ -20,29 +20,32 @@ header {
   top: 0;
   left: 0;
   z-index: 1;
-  padding: 15px 30px;
+  padding: 15px 50px;
   background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.left, .right {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-weight: bold;
-}
-
-header > .left {
-  gap: 80px;
+  gap: 100px;
 }
 
 header > .right {
-  gap: 20px;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  gap: 80px;
 }
 
-ul {
+.hamburger-button {
+  display: none;
+}
+
+.hamburger-button:hover {
+  cursor: pointer;
+}
+
+ul, .profile-nav {
   color: #4E5464;
   list-style: none;
   display: flex;
@@ -51,7 +54,7 @@ ul {
   align-items: center;
 }
 
-header select {
+select {
   color: #4E5464;
   border-width: 0;
   font-size: 1rem;
@@ -78,13 +81,12 @@ header .choose-language .selector {
   margin-right: 8px;
 }
 
+/* =========== WELCOME HEADING ===========*/
 .welcome {
-  margin: 30px 30px;
+  margin: 30px 50px;
   display: flex;
   justify-content: space-between;
 }
-
-/* =========== WELCOME HEADING ===========*/
 
 .welcome h1 {
   font-size: 2em;
@@ -113,8 +115,8 @@ header .choose-language .selector {
 /* =========== TOP BAR / PROFILE TOP ===========*/
 
 .container {
-  margin: 30px 30px;
-  padding: 40px;
+  margin: 30px 50px;
+  padding: 30px;
   background-color: white;
   border-radius: 20px;
   display: flex;
@@ -184,6 +186,11 @@ header .choose-language .selector {
 
 .sm-icon {
   max-height: 1lh;
+  width: auto;
+}
+
+.xs-icon {
+  max-height: 0.5lh;
   width: auto;
 }
 
@@ -369,20 +376,14 @@ section.tasks ul {
   color: #00AEEB;
 }
 
-.tasks ul > li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-}
-
-
 /* =========== BADGES ===========*/
 .filter-section {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  border: 1px solid red;
 }
 
 .filter-section > select, .filter-section > div {
@@ -395,6 +396,10 @@ section.tasks ul {
 
 input {
   all: unset;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
 }
 
 .badges-container {
@@ -492,11 +497,17 @@ footer .right > * {
 }
 
 /* ========== FRIEND LISTS PAGE ========== */
+.inline-icon {
+  margin-right: 10px;
+  vertical-align: top;
+}
+
 .settings {
   height: fit-content;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
 }
 
 .settings > img {
@@ -525,9 +536,16 @@ footer .right > * {
 }
 
 /*========== TABLE FORMAT ===========*/
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
 table {
+  width: 100%;
   margin-top: 20px;
-  border-spacing: 0;
+  border-collapse: collapse;
+  border-radius: 6px;
 }
 
 table thead {
@@ -540,11 +558,22 @@ th, td {
   padding: 16px;
 }
 
+table tr {
+  border: 1px solid #E1E1E1;
+}
+
 .level-cell, .task-name {
   display: flex;
   justify-items: flex-start;
   align-items: center;
   gap: 15px;
+}
+
+.task-name p {
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
 }
 
 .level-cell .icon {
@@ -592,4 +621,160 @@ th, td {
 .successful-status {
   background-color: #45B26B10;
   color: #45B26B;
+}
+
+
+/*=============== PAGINATION ==============*/
+
+.pagination-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-container.badge {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-nav, .page-nav .page-num {
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.pagination-container .page-nav .page-num li {
+  min-width: 24px;
+  padding: 4px 2px 7px 2px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.page-nav .page-num .selected-page {
+  color: white;
+  background-color: #00AEEB;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  header .right {
+    display: none;
+  }
+
+  header .right.visible {
+    background-color: white;
+    box-shadow: 0px 8px 24px #00000012;
+    border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 30px;
+  }
+
+  header .right > *, header .right ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 30px;
+  }
+
+  header .right .profile-nav {
+    order: -1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-items: right;
+    align-items: center;
+    column-gap: 20px;
+    row-gap: 10px;
+  }
+
+  header .right .profile-nav > img {
+    width: fit-content;
+  }
+
+  header .right .profile-nav .outline-box {
+    grid-column: 1 / -1;
+  }
+
+  .hamburger-button {
+    display: inline;
+  }
+
+  .badges-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .badges-container .badge-item p {
+    font-size: 18px;
+  }
+
+  .settings > img {
+    align-self: flex-start;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .date-box {
+    max-width: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .task-buttons {
+    overflow-x: auto;
+  }
+
+  .badges-container, .welcome, .profile-progress {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .welcome button {
+    margin-top: 10px;
+    width: 180px;
+  }
+
+  .curr-level {
+    grid-column: 1 / 1;
+  }
+
+  .next-level {
+    grid-column: 3 / 3;
+  }
+
+  .progress-description {
+    grid-column: 1 / -1;
+    grid-row: -1 / -1;
+  }
+
+  .profile-details {
+    overflow-x: auto;
+  }
+
+  .pagination-container, footer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  footer > .left {
+    text-align: center;
+    align-items: center;
+  }
+
 }

@@ -2,23 +2,25 @@ import Points from "./Points";
 import Table from "./Table";
 
 export default function PointHistory(props) {
-    const { data } = props;
+    const { data, itemsPerPage, getCurrentItems, index } = props;
+
+    const currentItems = getCurrentItems(data, itemsPerPage);
 
     return (
         <>
             <div className="filter-section">
                 <div className="search-box">
-                    <img/>
+                    <img className="sm-icon inline-icon" src="public/search.png"/>
                     <input placeholder="Search by wallet address"/>
                 </div>
-                <div>
-                    <input type="text" placeholder="Joined Date" onFocus={(e) => {
+                <div className="date-box">
+                    <input type="text" placeholder="Transaction Date" onFocus={(e) => {
                         e.target.type="date"
                     }}/>
                 </div>
                 <p>to</p>
-                <div>
-                    <input type="text" placeholder="Joined Date" onFocus={(e) => {
+                <div className="date-box">
+                    <input type="text" placeholder="Transaction Date" onFocus={(e) => {
                         e.target.type="date"
                     }}/>
                 </div>
@@ -42,7 +44,7 @@ export default function PointHistory(props) {
                 </div>
             </div>
 
-            <Table data={data}></Table>
+            <Table data={currentItems} index={index}></Table>
         </>
     )
 }

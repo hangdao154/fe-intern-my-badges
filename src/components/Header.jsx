@@ -1,41 +1,24 @@
 import React from 'react'
+import NavBar from './NavBar'
 
 export default function Header() {
+    const handleShowNav = () => {
+        const navBar = document.querySelector("header .right");
+        navBar.classList.contains("visible") ? navBar.classList.remove("visible")
+                                            : navBar.classList.add("visible");
+    }
+
     return (
         <header>
             <div className="left">
-                <img src="public/svg/web-logo.svg"/>
-
-                <nav>
-                    <ul>
-                        <li>Task Center</li>
-                        <li>
-                            <select>
-                                <option>Stake&Earn</option>
-                            </select>
-                        </li>
-                        <li>
-                            <select>
-                                <option>NFT</option>
-                            </select>
-                        </li>
-                        <li>Leaderboard</li>
-                    </ul>   
-                </nav>
+                <img className="web-logo" src="public/svg/web-logo.svg"/>
             </div>
 
             <div className="right">
-                <div className="choose-language">
-                    <select className="selector">
-                        <option><img/>Japanese</option>
-                    </select>
-                </div>
-                <img className="md-icon" src="public/bell-icon.png"/>
-                <div className="outline-box">
-                    <img className="sm-icon" src="public/user-ava.png"/>
-                    <p>0xE74...b6e3</p>
-                </div>
+                <NavBar></NavBar>
             </div>
+
+            <img className="md-icon hamburger-button" src="public/hamburger-menu.png" onClick={handleShowNav}/>
         </header>
     )
 }

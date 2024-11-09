@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import ProfileDetails from './components/ProfileDetails';
 import Points from './components/Points';
+import Pagination from './components/PageNav';
 
 function App() {
   const [profilePage, setProfilePage] = useState(0);
@@ -74,7 +75,7 @@ function App() {
 
             <section className="container tasks">
                 <ul className="task-buttons">
-                    <li className={activeTaskBtn === 0 ? "active-button" : ""} onClick={() => {
+                    <li className={activeTaskBtn === 0 ? "active-button inline-icon" : ""} onClick={() => {
                     setActiveTaskBtn(0);
                     setTaskPage(0);
                     }}>My Badges<img className="sm-icon" src="public/question-icon.png"/></li>
