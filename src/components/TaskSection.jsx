@@ -4,6 +4,7 @@ import FriendList from "./FriendList";
 import PointHistory from "./PointHistory";
 import PageItemsSelector from './PageItemsSelector';
 import PageNav from './PageNav';
+import Pagination from './Pagination';
 
 export default function TaskSection(props) {
     const { page } = props;
@@ -115,79 +116,31 @@ export default function TaskSection(props) {
     }
     /*========================================*/
 
+    const handleSort = () => {}
 
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(10);
-
-    const startIndex = (currentPage - 1) * itemsPerPage;
-
-    function getCurrentItems(data, itemsPerPage) {
-        const endIndex = startIndex + itemsPerPage;
-        return data.slice(startIndex, endIndex);
-    }
-
-    const handleChangePage = (page) => {
-        setCurrentPage(page);
-    }
-
-    const handlePreviousPage = () => {
-        if (currentPage > 1) {
-        setCurrentPage(currentPage - 1);
-        }
-    };
-
-    const handleNextPage = (totalPages) => {
-        if (currentPage < totalPages) {
-        setCurrentPage(currentPage + 1);
-        }
-    };
-
-    const handleChangeItemsPerPage = (num) => {
-        setItemsPerPage(num);
-        console.log(itemsPerPage);
-    }
-
-    const handleSort = (data, key) => {
-        data.sort((a, b) => a[key] - b[key]);
-    }
 
     switch (page) {
         case 1: {
-            const totalPages = Math.ceil(friendL.length / itemsPerPage);
             return (
                 <>
-                    <FriendList data={friendL} itemsPerPage={itemsPerPage} index={startIndex} getCurrentItems={getCurrentItems} handleSort={handleSort}></FriendList>
-                    <div className="pagination-container">
-                        <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
-                        <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
-                    </div>
+                    <FriendList data={friendL} handleSort={handleSort}></FriendList>
                 </>
             )
         }
 
         case 2: {
-            const totalPages = Math.ceil(transL.length / itemsPerPage);
             return (
                 <>
-                    <PointHistory data={transL} itemsPerPage={itemsPerPage} getCurrentItems={getCurrentItems} index={startIndex} handleSort={handleSort}></PointHistory>
-                    <div className="pagination-container">
-                        <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
-                        <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
-                    </div>
+                    <PointHistory data={transL}></PointHistory>
                 </>
             )
         }
 
         default: {
-            const totalPages = Math.ceil(badgeL.length / itemsPerPage);
             return (
                 <>
-                    <MyBadges data={badgeL} index={startIndex} getCurrentItems={getCurrentItems} itemsPerPage={itemsPerPage} handleChangeItemsPerPage={handleChangeItemsPerPage}></MyBadges>
-                    <div className="pagination-container badge">
-                        <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
-                    </div>
-                 </>
+                    <MyBadges data={badgeL}></MyBadges>
+                </>
             )
         }
     }

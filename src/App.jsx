@@ -10,8 +10,11 @@ function App() {
   const [profilePage, setProfilePage] = useState(0);
 
   const [taskPage, setTaskPage] = useState(0);
-
   const [activeTaskBtn, setActiveTaskBtn] = useState(0);
+
+  const handleChangeStartIndex = (num) => {
+    setStartIndex(num);
+  }
 
   return (
     <>
@@ -76,18 +79,18 @@ function App() {
             <section className="container tasks">
                 <ul className="task-buttons">
                     <li className={activeTaskBtn === 0 ? "active-button inline-icon" : ""} onClick={() => {
-                    setActiveTaskBtn(0);
-                    setTaskPage(0);
+                        setActiveTaskBtn(0);
+                        setTaskPage(0);
                     }}>My Badges<img className="sm-icon" src="public/question-icon.png"/></li>
 
                     <li className={activeTaskBtn === 1 ? "active-button" : ""} onClick={() => {
-                    setActiveTaskBtn(1);
-                    setTaskPage(1);
+                        setActiveTaskBtn(1);
+                        setTaskPage(1);
                     }}>Friend List</li>
                     
                     <li className={activeTaskBtn === 2 ? "active-button" : ""} onClick={() => {
-                    setActiveTaskBtn(2);
-                    setTaskPage(2);
+                        setActiveTaskBtn(2);
+                        setTaskPage(2);
                     }}>Point History</li>
                 </ul>
 

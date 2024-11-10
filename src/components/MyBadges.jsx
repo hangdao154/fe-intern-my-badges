@@ -1,14 +1,38 @@
 import { React, useState } from 'react'
 import BadgeItem from './BadgeItem'
-import Pagination from './PageNav'
+import PageNav from './PageNav'
 
 export default function MyBadges(props) {
-    const {data, getCurrentItems, itemsPerPage, index, handleChangeItemsPerPage} = props;
-
-    handleChangeItemsPerPage(12);
-    const currentItems = getCurrentItems(data, itemsPerPage);
+    const { data, handleSort } = props;
     
-    let startIndex = index;
+    const [currentPage, setCurrentPage] = useState(1);
+    
+    const ITEMS_PER_PAGE = 12;
+    const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    
+    function getCurrentItems(data) {
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        return data.slice(startIndex, endIndex);
+    }
+    
+    const handleChangePage = (page) => {
+        setCurrentPage(page);
+    }
+    
+    const handlePreviousPage = () => {
+        if (currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+        }
+    };
+    
+    const handleNextPage = (totalPages) => {
+        if (currentPage < totalPages) {
+        setCurrentPage(currentPage + 1);
+        }
+    };
+    
+    let index = startIndex;
 
     return (
         <>
@@ -23,10 +47,12 @@ export default function MyBadges(props) {
             </div>
 
             <div className="badges-container">
-                { currentItems.map(item => (
-                    <BadgeItem key={startIndex++} badgeImg={item.badgeImg} flag={item.flag} status={item.status}></BadgeItem>
+                {getCurrentItems(data).map(item => (
+                    <BadgeItem key={index++} badgeImg={item.badgeImg} flag={item.flag} status={item.status}></BadgeItem>
                 ))}
             </div>
+
+            <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
         </>
     )
 }
