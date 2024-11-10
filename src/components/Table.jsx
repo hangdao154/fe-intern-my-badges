@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Points from "./Points";
 import LevelCell from "./LevelCell";
 import TaskNameCell from "./TaskNameCell";
@@ -5,9 +7,22 @@ import StatusCell from "./StatusCell";
 import DateCell from "./DateCell";
 
 export default function Table(props) {
-    const {data, index, handleKeyToSort} = props;
+    const {data, index, handleKeyToSort } = props;
+
+    const [ sort, setSort ] = useState( { keyToSort: "", direction: "asc"});
 
     let currentIndex = index;
+
+    function handleHeaderClick(header) {
+        setSort({
+            keyToSort: header,
+            direction: (header === sort.keyToSort) 
+                ? ((sort.direction === "asc") ? "desc" : "asc") 
+                : "asc"
+        });
+
+        handleKeyToSort(sort);  
+    }   
 
     
     const columns = Object.keys(data[0]);
@@ -44,8 +59,8 @@ export default function Table(props) {
                     <tr key={currentIndex++}>
                         <th>No</th>
                         
-                        {columns.map(col => (
-                            <th key={col} onClick={() => handleKeyToSort(col)}>{col}</th>
+                        {columns.map(header => (
+                            <th key={header} onClick={() => {handleHeaderClick(header)}}>{header}</th>
                         ))}
                     </tr>
                 </thead>

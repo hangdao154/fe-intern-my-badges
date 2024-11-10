@@ -2,9 +2,6 @@ import { React, useState } from 'react'
 import MyBadges from "./MyBadges";
 import FriendList from "./FriendList";
 import PointHistory from "./PointHistory";
-import PageItemsSelector from './PageItemsSelector';
-import PageNav from './PageNav';
-import Pagination from './Pagination';
 
 export default function TaskSection(props) {
     const { page } = props;
@@ -116,31 +113,29 @@ export default function TaskSection(props) {
     }
     /*========================================*/
 
-    const handleSort = () => {}
+    const handleSort = (data, sortInfo) => {
+        return (sortInfo.direction === "asc" 
+            ? data.sort((a, b) => a[sortInfo.keyToSort] - b[sortInfo.keyToSort]) 
+            : data.sort((a, b) => b[sortInfo.keyToSort] - a[sortInfo.keyToSort]))
+    }
 
 
     switch (page) {
         case 1: {
             return (
-                <>
                     <FriendList data={friendL} handleSort={handleSort}></FriendList>
-                </>
             )
         }
 
         case 2: {
             return (
-                <>
-                    <PointHistory data={transL}></PointHistory>
-                </>
+                    <PointHistory data={transL} handleSort={handleSort}></PointHistory>
             )
         }
 
         default: {
             return (
-                <>
-                    <MyBadges data={badgeL}></MyBadges>
-                </>
+                    <MyBadges data={badgeL} handleSort={handleSort}></MyBadges>
             )
         }
     }

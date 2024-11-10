@@ -10,6 +10,7 @@ export default function PointHistory(props) {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [sortedData, setSortedData] = useState(data);
     
     const totalPages = Math.ceil(data.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -40,13 +41,12 @@ export default function PointHistory(props) {
         setItemsPerPage(num);
     }
 
-    const handleKeyToSort = (key) => {
-        handleSort(data, key);
-        console.log(data);
+    const handleKeyToSort = ( sortInfo ) => {
+        setSortedData(handleSort(data.slice(), sortInfo));
     }
 
     return (
-        <>
+        <>  
             <div className="filter-section">
                 <div className="search-box">
                     <img className="sm-icon inline-icon" src="public/search.png"/>
@@ -83,7 +83,7 @@ export default function PointHistory(props) {
                 </div>
             </div>
 
-            <Table data={getCurrentItems(data, itemsPerPage)} index={startIndex} handleKeyToSort={handleKeyToSort}></Table>
+            <Table data={getCurrentItems(sortedData, itemsPerPage)} index={startIndex} handleKeyToSort={handleKeyToSort}></Table>
 
             <div className="pagination-container">
                 <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>

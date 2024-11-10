@@ -551,6 +551,10 @@ table thead {
   background-color: #ECECEC;
 }
 
+table th:hover {
+  cursor: pointer;
+}
+
 th, td {
   text-align: left;
   font-size: 14px;

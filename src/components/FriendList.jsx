@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Points from "./Points";
 import Table from "./Table";
@@ -10,6 +10,7 @@ export default function FriendList(props) {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [sortedData, setSortedData] = useState(data);
     
     const totalPages = Math.ceil(data.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -25,13 +26,13 @@ export default function FriendList(props) {
     
     const handlePreviousPage = () => {
         if (currentPage > 1) {
-        setCurrentPage(currentPage - 1);
+            setCurrentPage(currentPage - 1);
         }
     };
     
     const handleNextPage = (totalPages) => {
         if (currentPage < totalPages) {
-        setCurrentPage(currentPage + 1);
+            setCurrentPage(currentPage + 1);
         }
     };
     
@@ -40,9 +41,8 @@ export default function FriendList(props) {
         setItemsPerPage(num);
     }
 
-    const handleKeyToSort = (key) => {
-        handleSort(data, key);
-        console.log(data);
+    const handleKeyToSort = ( sortInfo ) => {
+        setSortedData(handleSort(data.slice(), sortInfo));
     }
 
     return (
@@ -80,7 +80,7 @@ export default function FriendList(props) {
                 </div>
             </div>
             
-            <Table data={getCurrentItems(data, itemsPerPage)} index={startIndex} handleKeyToSort={handleKeyToSort}></Table>
+            <Table data={getCurrentItems(sortedData, itemsPerPage)} index={startIndex} handleKeyToSort={handleKeyToSort}></Table>
 
             <div className="pagination-container">
                 <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
