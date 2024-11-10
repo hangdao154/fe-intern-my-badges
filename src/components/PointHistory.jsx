@@ -36,8 +36,8 @@ export default function PointHistory(props) {
     };
     
     const handleChangeItemsPerPage = (num) => {
+        setCurrentPage(1);
         setItemsPerPage(num);
-        // console.log(itemsPerPage);
     }
 
     const handleKeyToSort = (key) => {
@@ -85,9 +85,10 @@ export default function PointHistory(props) {
 
             <Table data={getCurrentItems(data, itemsPerPage)} index={startIndex} handleKeyToSort={handleKeyToSort}></Table>
 
-            <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
-
-            <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
+            <div className="pagination-container">
+                <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
+                <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
+            </div>
         </>
     )
 }

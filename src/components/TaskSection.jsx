@@ -110,7 +110,7 @@ export default function TaskSection(props) {
     }];
     
     const transL = [], badgeL = [];
-    for (let i = 0; i < 25; i++) { 
+    for (let i = 0; i < 72; i++) { 
         transL.push(transaction)
         badgeL.push(badge);
     }

@@ -12,10 +12,9 @@ export default function FriendList(props) {
     const [itemsPerPage, setItemsPerPage] = useState(10);
     
     const totalPages = Math.ceil(data.length / itemsPerPage);
-    let startIndex = (currentPage - 1) * itemsPerPage;
+    const startIndex = (currentPage - 1) * itemsPerPage;
     
     function getCurrentItems(data, itemsPerPage) {
-        startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         return data.slice(startIndex, endIndex);
     }
@@ -37,8 +36,8 @@ export default function FriendList(props) {
     };
     
     const handleChangeItemsPerPage = (num) => {
+        setCurrentPage(1);
         setItemsPerPage(num);
-        // console.log(itemsPerPage);
     }
 
     const handleKeyToSort = (key) => {
@@ -83,9 +82,11 @@ export default function FriendList(props) {
             
             <Table data={getCurrentItems(data, itemsPerPage)} index={startIndex} handleKeyToSort={handleKeyToSort}></Table>
 
-            <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
+            <div className="pagination-container">
+                <PageItemsSelector handleChangeItemsPerPage={handleChangeItemsPerPage}></PageItemsSelector>
 
-            <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
+                <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
+            </div>
         </>
     )
 }

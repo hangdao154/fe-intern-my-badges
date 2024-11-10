@@ -3,9 +3,22 @@ import React, { useState, useEffect } from 'react';
 export default function PageNav(props) {
     const { totalPages, currentPage, handleChangePage, handleNextPage, handlePreviousPage } = props;
     const pageArr = [];
-
-    for (let i = 1; i <= totalPages; i++) {
-        pageArr.push(i);
+    
+    if (totalPages < 4) {
+        for (let i = 1; i <= totalPages; i++) {
+            pageArr.push(i);
+        }
+    } else if (totalPages >= 4 && totalPages - currentPage > 3) {
+        pageArr.push(currentPage);
+        pageArr.push(currentPage + 1);
+        pageArr.push(currentPage + 2);
+        pageArr.push("...");
+        pageArr.push(totalPages);
+    } else if (totalPages >= 4 && totalPages - currentPage <= 3) {
+        pageArr.push(totalPages - 3);
+        pageArr.push(totalPages - 2);
+        pageArr.push(totalPages - 1);
+        pageArr.push(totalPages);
     }
 
     return (

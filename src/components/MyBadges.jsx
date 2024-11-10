@@ -52,7 +52,9 @@ export default function MyBadges(props) {
                 ))}
             </div>
 
-            <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
+            <div className="pagination-container badge">
+                <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>
+            </div>
         </>
     )
 }
