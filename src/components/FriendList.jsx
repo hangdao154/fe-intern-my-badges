@@ -76,7 +76,7 @@ export default function FriendList(props) {
                     <Points point="100,000,000 SP"></Points>
                 </div>
                 <div className="right">
-                        <p style={{color: "#4E5464"}}>Total Friends: 24</p>
+                        <p style={{color: "#4E5464"}}>Total Friends: {data.length}</p>
                 </div>
             </div>
             

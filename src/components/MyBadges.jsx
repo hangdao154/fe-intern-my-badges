@@ -1,15 +1,27 @@
 import { React, useState } from 'react'
 import BadgeItem from './BadgeItem'
 import PageNav from './PageNav'
+import BadgeDetails from './BadgeDetails';
 
 export default function MyBadges(props) {
-    const { data, handleSort } = props;
+    const { data, handleSort, onClick } = props;
     
     const [currentPage, setCurrentPage] = useState(1);
+    const [popupState, setPopupState] = useState("false");
+    const [displayedPopupBadge, setDisplayedPopupBade] = useState(undefined);
     
     const ITEMS_PER_PAGE = 12;
     const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+
+    function handleBadgeClick(badge) {
+        setPopupState("true");
+        setDisplayedPopupBade(badge);
+    }
+
+    function handleChangePopupState(state) {
+        setPopupState(state);
+    }
     
     function getCurrentItems(data) {
         const endIndex = startIndex + ITEMS_PER_PAGE;
@@ -48,9 +60,12 @@ export default function MyBadges(props) {
 
             <div className="badges-container">
                 {getCurrentItems(data).map(item => (
-                    <BadgeItem key={index++} badgeImg={item.badgeImg} flag={item.flag} status={item.status}></BadgeItem>
+                    <BadgeItem key={index++} data={item} handleBadgeClick={handleBadgeClick}>
+                    </BadgeItem>
                 ))}
             </div>
+
+            <BadgeDetails popupState={popupState} data={displayedPopupBadge} handleChangePopupState={handleChangePopupState}></BadgeDetails>
 
             <div className="pagination-container badge">
                 <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>

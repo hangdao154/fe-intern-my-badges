@@ -81,7 +81,7 @@ function App() {
                     <li className={activeTaskBtn === 0 ? "active-button inline-icon" : ""} onClick={() => {
                         setActiveTaskBtn(0);
                         setTaskPage(0);
-                    }}>My Badges<img className="sm-icon" src="public/question-icon.png"/></li>
+                    }}>My Badges<img className="sm-icon inline-icon" src="public/question-icon.png"/></li>
 
                     <li className={activeTaskBtn === 1 ? "active-button" : ""} onClick={() => {
                         setActiveTaskBtn(1);

@@ -7,19 +7,132 @@ export default function TaskSection(props) {
     const { page } = props;
 
     /*============== Test data ==============*/
-    const transaction = {
+    const transL = [{
         transactionDate: new Date(),
         taskName: "Authorise X(Twitter) Account",
         earnedPoints: 100000000,
         refereeAdress: "...",
         relatedPost: "...",
         status: "Successful"
-    }
-    const badge = {
+    }, {
+        transactionDate: new Date(),
+        taskName: "Authorise Linkedin Account",
+        earnedPoints: 20000000,
+        refereeAdress: "...",
+        relatedPost: "...",
+        status: "Failed"
+    }, {
+        transactionDate: new Date(),
+        taskName: "Authorise Facebook Account",
+        earnedPoints: 900000,
+        refereeAdress: "...",
+        relatedPost: "...",
+        status: "Verifying"
+    }, {
+        transactionDate: new Date(),
+        taskName: "Authorise X(Twitter) Account",
+        earnedPoints: 100000000,
+        refereeAdress: "...",
+        relatedPost: "...",
+        status: "Successful"
+    }, {
+        transactionDate: new Date(),
+        taskName: "Authorise Linkedin Account",
+        earnedPoints: 20000000,
+        refereeAdress: "...",
+        relatedPost: "...",
+        status: "Failed"
+    }, {
+        transactionDate: new Date(),
+        taskName: "Authorise Facebook Account",
+        earnedPoints: 900000,
+        refereeAdress: "...",
+        relatedPost: "...",
+        status: "Verifying"
+    }]
+    const badgeL = [{
+        name: "Badge Yet-Claimed Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge X(Twitter)",
+        tier: 1,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
+        badgeImg: "public/badge/badge1.png",
+        flag: "public/badge-flag/saved-icon.png",
+        status: "yet-claimable"
+    }, {
+        name: "Badge Claimed Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge X(Twitter)",
+        tier: 1,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
+        badgeImg: "public/badge/badge1.png",
+        flag: "public/badge-flag/saved-icon.png",
+        status: "claimable"
+    }, {
+        name: "Badge Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge Linkedin",
+        tier: 2,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
         badgeImg: "public/badge/badge1.png",
         flag: "public/badge-flag/saved-icon.png",
         status: "owned"
-    }
+    }, {
+        name: "Badge Something Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge X(Twitter)",
+        tier: 3,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
+        badgeImg: "public/badge/badge1.png",
+        flag: "public/badge-flag/saved-icon.png",
+        status: "yet-claimable"
+    }, {
+        name: "Badge Claimed Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge X(Twitter)",
+        tier: 1,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
+        badgeImg: "public/badge/badge1.png",
+        flag: "public/badge-flag/saved-icon.png",
+        status: "claimable"
+    }, {
+        name: "Badge Something Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge Facebook",
+        tier: 2,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
+        badgeImg: "public/badge/badge1.png",
+        flag: "public/badge-flag/saved-icon.png",
+        status: "owned"
+    }, {
+        name: "Badge Something Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge X(Twitter)",
+        tier: 1,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
+        badgeImg: "public/badge/badge1.png",
+        flag: "public/badge-flag/saved-icon.png",
+        status: "yet-claimable"
+    }, {
+        name: "Badge Something Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge X(Twitter)",
+        tier: 2,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
+        badgeImg: "public/badge/badge1.png",
+        flag: "public/badge-flag/saved-icon.png",
+        status: "claimable"
+    }, {
+        name: "Badge Something Test",
+        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi tempora ipsum nihil recusandae. Id voluptatum iusto sapiente obcaecati debitis voluptas consectetur modi numquam sed, commodi at? Eius eos distinctio magni!",
+        type: "Badge Linkedin",
+        tier: 3,
+        howToEarn: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam est aliquid, eligendi vitae quis reprehenderit consequatur recusandae at officiis porro soluta veritatis excepturi culpa ea dolore tempora nulla cupiditate corrupti.",
+        badgeImg: "public/badge/badge1.png",
+        flag: "public/badge-flag/saved-icon.png",
+        status: "owned"
+    }]
+
     const friendL = [{
         walletAddress: "B",
         joinedDate: new Date(),
@@ -106,37 +219,39 @@ export default function TaskSection(props) {
         yourRefereeRewards: 100000
     }];
     
-    const transL = [], badgeL = [];
-    for (let i = 0; i < 72; i++) { 
-        transL.push(transaction)
-        badgeL.push(badge);
-    }
     /*========================================*/
 
     const handleSort = (data, sortInfo) => {
-        return (sortInfo.direction === "asc" 
-            ? data.sort((a, b) => a[sortInfo.keyToSort] - b[sortInfo.keyToSort]) 
-            : data.sort((a, b) => b[sortInfo.keyToSort] - a[sortInfo.keyToSort]))
+        const keyToSort = sortInfo.keyToSort;
+        const direction = sortInfo.direction;
+        console.log(typeof(data[0][keyToSort]));
+
+        switch (typeof(data[0][keyToSort])) {
+            case "string":
+                return (direction === "asc" 
+                    ? data.sort((a, b) => a[keyToSort].localeCompare(b[keyToSort])) 
+                    : data.sort((a, b) => b[keyToSort].localeCompare(a[keyToSort])))
+            case "number":
+            case "object":
+                return (direction === "asc" 
+                    ? data.sort((a, b) => a[keyToSort] - b[keyToSort]) 
+                    : data.sort((a, b) => b[keyToSort] - a[keyToSort]))
+            default: return data;
+        }
     }
 
 
     switch (page) {
         case 1: {
-            return (
-                    <FriendList data={friendL} handleSort={handleSort}></FriendList>
-            )
+            return (<FriendList data={friendL} handleSort={handleSort}></FriendList>)
         }
 
         case 2: {
-            return (
-                    <PointHistory data={transL} handleSort={handleSort}></PointHistory>
-            )
+            return (<PointHistory data={transL} handleSort={handleSort}></PointHistory>)
         }
 
         default: {
-            return (
-                    <MyBadges data={badgeL} handleSort={handleSort}></MyBadges>
-            )
+            return (<MyBadges data={badgeL} handleSort={handleSort}></MyBadges>)
         }
     }
 }

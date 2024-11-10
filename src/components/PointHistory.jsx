@@ -79,7 +79,7 @@ export default function PointHistory(props) {
                     <img className="sm-icon" src="public/question-icon.png"/>
                 </div>
                 <div className="right">
-                        <p style={{color: "#4E5464"}}>Total Transactions: 24</p>
+                        <p style={{color: "#4E5464"}}>Total Transactions: {data.length}</p>
                 </div>
             </div>
 

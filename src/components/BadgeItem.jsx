@@ -3,17 +3,17 @@ import BadgeStatus from './BadgeStatus'
 
 export default function BadgeItem(props) {
 
-  const { badgeImg, flag, status } = props;
+  const { data, handleBadgeClick } = props;
 
   return (
-    <div className="box badge-item">
-        <img className="badge-flag" src={flag}/>
-        <img className="badge-img" src={badgeImg}/>
-        <p>Badge Celebrating 30 years long long long name</p>
+    <div className="box badge-item" onClick={() => {handleBadgeClick(data)}}>
+        <img className="badge-flag" src={data.flag}/>
+        <img className={data.status === "yet-claimable" ? "badge-img gray-scale" : "badge-img"} src={data.badgeImg}/>
+        <p>{data.name}</p>
 
         <hr/>
 
-        <BadgeStatus status={status}></BadgeStatus>
+        <BadgeStatus status={data.status}></BadgeStatus>
     </div>
   )
 }
