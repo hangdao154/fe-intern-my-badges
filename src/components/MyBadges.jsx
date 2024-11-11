@@ -65,6 +65,7 @@ export default function MyBadges(props) {
                 ))}
             </div>
 
+            <div className={popupState === "true" ? "overlay-shown" : "overlay-hidden"}></div>
             <BadgeDetails popupState={popupState} data={displayedPopupBadge} handleChangePopupState={handleChangePopupState}></BadgeDetails>
 
             <div className="pagination-container badge">

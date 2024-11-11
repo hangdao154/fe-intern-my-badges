@@ -9,26 +9,26 @@ export default function BadgeDetails(props) {
         const [visibleContent, setVisibleContent] = useState(data.description);
 
         return (
-            <div className="badge-details"k>
-                <img onClick={() => handleChangePopupState("false")}/>
+            <div className="container badge-details"k>
+                <img src="public/x-button.png" className="escape-btn sm-icon" onClick={() => handleChangePopupState("false")}/>
     
                 <img src={data.badgeImg}/>
                 <h1>{data.name}</h1>
                 <div className="type-tier-container">
                     <p className="badge-type">{data.type}</p>
-                    <p className="badge-tier">{data.tier}</p>
+                    <p className="badge-tier">Tier {data.tier}</p>
                 </div>
                 
-                <div className="currentPage-slider">
-                    <button className={currentPage === 1 ? "active-btn" : ""} onClick={() => {
+                <ul className="currentPage-slider">
+                    <li className={currentPage === 1 ? "active-button" : ""} onClick={() => {
                         setcurrentPage(1);
                         setVisibleContent(data.description);
-                    }}>Description</button>
-                    <button className={ currentPage === 2 ? "active-btn" : ""} onClick={() => {
+                    }}>Description</li>
+                    <li className={ currentPage === 2 ? "active-button" : ""} onClick={() => {
                         setcurrentPage(2);
                         setVisibleContent(data.howToEarn);
-                    }}>How To Earn</button>
-                </div>
+                    }}>How To Earn</li>
+                </ul>
     
                 <p>{visibleContent}</p>
     
