@@ -14,6 +14,7 @@ export default function MyBadges(props) {
     const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
+    // Pagination
     function handleBadgeClick(badge) {
         setPopupState("true");
         setDisplayedPopupBade(badge);
@@ -64,9 +65,10 @@ export default function MyBadges(props) {
                     </BadgeItem>
                 ))}
             </div>
-
-            <div className={popupState === "true" ? "overlay-shown" : "overlay-hidden"}></div>
+            
             <BadgeDetails popupState={popupState} data={displayedPopupBadge} handleChangePopupState={handleChangePopupState}></BadgeDetails>
+            
+            <div className={popupState === "true" ? "overlay-shown" : "overlay-hidden"}></div>
 
             <div className="pagination-container badge">
                 <PageNav totalPages={totalPages} currentPage={currentPage} handleChangePage={handleChangePage} handleNextPage={() => handleNextPage(totalPages)} handlePreviousPage={handlePreviousPage}></PageNav>

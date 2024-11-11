@@ -132,7 +132,6 @@ export default function TaskSection(props) {
         flag: "public/badge-flag/saved-icon.png",
         status: "owned"
     }]
-
     const friendL = [{
         walletAddress: "B",
         joinedDate: new Date(),
@@ -218,7 +217,6 @@ export default function TaskSection(props) {
         refereeCount: 100000,
         yourRefereeRewards: 100000
     }];
-    
     /*========================================*/
 
     const handleSort = (data, sortInfo) => {
@@ -226,6 +224,7 @@ export default function TaskSection(props) {
         const direction = sortInfo.direction;
         console.log(typeof(data[0][keyToSort]));
 
+        // Sort the received data based on its type
         switch (typeof(data[0][keyToSort])) {
             case "string":
                 return (direction === "asc" 
@@ -240,7 +239,7 @@ export default function TaskSection(props) {
         }
     }
 
-
+    // Switch the displaying task page
     switch (page) {
         case 1: {
             return (<FriendList data={friendL} handleSort={handleSort}></FriendList>)

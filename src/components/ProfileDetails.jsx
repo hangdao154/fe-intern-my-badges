@@ -1,6 +1,8 @@
 export default function ProfileDetails(props) {
+    // Return the slider page based on the state of the slider's page
     const { page } = props;
 
+    // Show Progress Page
     if (page === 0) {
         return (
             <div className="profile-progress">
@@ -31,6 +33,7 @@ export default function ProfileDetails(props) {
         )
     }
 
+    // Show Details Page
     return (
         <div className="box profile-details">
             <div className="item">

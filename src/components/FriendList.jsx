@@ -11,7 +11,8 @@ export default function FriendList(props) {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const [sortedData, setSortedData] = useState(data);
-    
+
+    // Pagination
     const totalPages = Math.ceil(data.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     
@@ -41,6 +42,7 @@ export default function FriendList(props) {
         setItemsPerPage(num);
     }
 
+    // Pass the sort info and the data list to sort back to sort function
     const handleKeyToSort = ( sortInfo ) => {
         setSortedData(handleSort(data.slice(), sortInfo));
     }

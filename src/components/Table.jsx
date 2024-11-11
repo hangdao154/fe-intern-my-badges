@@ -14,6 +14,7 @@ export default function Table(props) {
     let currentIndex = index;
 
     function handleHeaderClick(header) {
+        // Set the sort info: key & direction
         setSort({
             keyToSort: header,
             direction: (header === sort.keyToSort) 
@@ -21,6 +22,7 @@ export default function Table(props) {
                 : "asc"
         });
 
+        // Pass the sort info back to sort function
         handleKeyToSort(sort);  
     }   
 

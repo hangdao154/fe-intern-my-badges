@@ -2,6 +2,7 @@ import React from 'react'
 import NavBar from './NavBar'
 
 export default function Header() {
+    // Showing / Hiding the hamburger navbar
     const handleShowNav = () => {
         const navBar = document.querySelector("header .right");
         navBar.classList.contains("visible") ? navBar.classList.remove("visible")
