@@ -15,8 +15,8 @@ export default function NavBar() {
                         </select>
                     </li>
                     <li>Leaderboard</li>
-                </ul>   
-             </nav>
+                </ul>
+            </nav>
 
             <div className="profile-nav">
                 <div className="choose-language">
@@ -24,9 +24,9 @@ export default function NavBar() {
                         <option>Japanese</option>
                     </select>
                 </div>
-                <img className="md-icon" src="public/bell-icon.png"/>
+                <img className="md-icon" src="public/bell-icon.png" />
                 <div className="outline-box">
-                    <img className="sm-icon" src="public/user-ava.png"/>
+                    <img className="sm-icon" src="public/user-ava.png" />
                     <p>0xE74...b6e3</p>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 export default function PageItemsSelector(props) {
     const { handleChangeItemsPerPage } = props;
 
-    return(
+    return (
         <div className="outline-box">
             <select onChange={(e) => {
                 handleChangeItemsPerPage(parseInt(e.target.value.split("").slice(0, 2).join("")));

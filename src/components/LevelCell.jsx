@@ -14,7 +14,7 @@ export default function LevelCell(props) {
     return (
         <div className="level-cell">
             <div className="icon">
-                <img src={imgURL}/>
+                <img src={imgURL} />
                 <p>{level}</p>
             </div>
             <div className="label">

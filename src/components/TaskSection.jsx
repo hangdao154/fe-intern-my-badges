@@ -222,18 +222,18 @@ export default function TaskSection(props) {
     const handleSort = (data, sortInfo) => {
         const keyToSort = sortInfo.keyToSort;
         const direction = sortInfo.direction;
-        console.log(typeof(data[0][keyToSort]));
+        console.log(typeof (data[0][keyToSort]));
 
         // Sort the received data based on its type
-        switch (typeof(data[0][keyToSort])) {
+        switch (typeof (data[0][keyToSort])) {
             case "string":
-                return (direction === "asc" 
-                    ? data.sort((a, b) => a[keyToSort].localeCompare(b[keyToSort])) 
+                return (direction === "asc"
+                    ? data.sort((a, b) => a[keyToSort].localeCompare(b[keyToSort]))
                     : data.sort((a, b) => b[keyToSort].localeCompare(a[keyToSort])))
             case "number":
             case "object":
-                return (direction === "asc" 
-                    ? data.sort((a, b) => a[keyToSort] - b[keyToSort]) 
+                return (direction === "asc"
+                    ? data.sort((a, b) => a[keyToSort] - b[keyToSort])
                     : data.sort((a, b) => b[keyToSort] - a[keyToSort]))
             default: return data;
         }

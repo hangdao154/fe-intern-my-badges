@@ -18,7 +18,7 @@ function BadgeStatus(props) {
 
     return (
         <button className={"status-btn " + status}>
-            <img className="sm-icon" src={iconURL}/>
+            <img className="sm-icon" src={iconURL} />
             {buttonContent}
         </button>
     )

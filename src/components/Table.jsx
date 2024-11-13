@@ -7,9 +7,9 @@ import StatusCell from "./StatusCell";
 import DateCell from "./DateCell";
 
 export default function Table(props) {
-    const {data, index, handleKeyToSort } = props;
+    const { data, index, handleKeyToSort } = props;
 
-    const [ sort, setSort ] = useState( { keyToSort: "", direction: "asc"});
+    const [sort, setSort] = useState({ keyToSort: "", direction: "asc" });
 
     let currentIndex = index;
 
@@ -17,16 +17,16 @@ export default function Table(props) {
         // Set the sort info: key & direction
         setSort({
             keyToSort: header,
-            direction: (header === sort.keyToSort) 
-                ? ((sort.direction === "asc") ? "desc" : "asc") 
+            direction: (header === sort.keyToSort)
+                ? ((sort.direction === "asc") ? "desc" : "asc")
                 : "asc"
         });
 
         // Pass the sort info back to sort function
-        handleKeyToSort(sort);  
-    }   
+        handleKeyToSort(sort);
+    }
 
-    
+
     const columns = Object.keys(data[0]);
 
     const handlePrintCell = (key, val) => {
@@ -37,8 +37,8 @@ export default function Table(props) {
                 return val;
             case "joinedDate":
             case "transactionDate":
-                return (<DateCell 
-                    date={[val.getFullYear(), val.getMonth()+1, val.getDate()].join("/")} 
+                return (<DateCell
+                    date={[val.getFullYear(), val.getMonth() + 1, val.getDate()].join("/")}
                     time={[val.getHours(), val.getMinutes(), val.getSeconds()].join(":")}></DateCell>)
             case "earnedPoints":
             case "yourRefereeRewards":
@@ -48,7 +48,7 @@ export default function Table(props) {
             case "taskName":
                 return (<TaskNameCell data={val}></TaskNameCell>)
             case "relatedPost":
-                return (<img className="sm-icon" src="public/extend-icon.png"/>)
+                return (<img className="sm-icon" src="public/extend-icon.png" />)
             case "status":
                 return (<StatusCell status={val}></StatusCell>)
         }
@@ -60,9 +60,9 @@ export default function Table(props) {
                 <thead>
                     <tr key={currentIndex++}>
                         <th>No</th>
-                        
+
                         {columns.map(header => (
-                            <th key={header} onClick={() => {handleHeaderClick(header)}}>{header}</th>
+                            <th key={header} onClick={() => { handleHeaderClick(header) }}>{header}</th>
                         ))}
                     </tr>
                 </thead>

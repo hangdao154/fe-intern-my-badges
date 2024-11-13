@@ -24,7 +24,7 @@ function App() {
                 <section className="welcome">
                     <h1>Welcome, 0xE74...b6e3!</h1>
                     <button>
-                        <img src="public/link-icon.png"/>
+                        <img src="public/link-icon.png" />
                         <p>View Referal Link</p>
                     </button>
                 </section>
@@ -32,20 +32,20 @@ function App() {
                 <section className="container top">
                     <div className="profile-main">
                         <div className="left">
-                            <img src="public/level-badge.png"/>
+                            <img src="public/level-badge.png" />
                             <h2>29</h2>
                         </div>
 
                         <div className="right">
                             <div>
                                 <h3>0X97c4...F469</h3>
-                                <img className="sm-icon" src="public/copy-icon.png"/>
+                                <img className="sm-icon" src="public/copy-icon.png" />
                             </div>
                             <Points point="1,000,000"></Points>
                         </div>
                     </div>
 
-                    <hr/>
+                    <hr />
 
                     <div className="slider">
                         <ProfileDetails page={profilePage}></ProfileDetails>
@@ -81,13 +81,13 @@ function App() {
                         <li className={activeTaskBtn === 0 ? "active-button inline-icon" : ""} onClick={() => {
                             setActiveTaskBtn(0);
                             setTaskPage(0);
-                        }}>My Badges<img className="sm-icon inline-icon" src="public/question-icon.png"/></li>
+                        }}>My Badges<img className="sm-icon inline-icon" src="public/question-icon.png" /></li>
 
                         <li className={activeTaskBtn === 1 ? "active-button" : ""} onClick={() => {
                             setActiveTaskBtn(1);
                             setTaskPage(1);
                         }}>Friend List</li>
-                        
+
                         <li className={activeTaskBtn === 2 ? "active-button" : ""} onClick={() => {
                             setActiveTaskBtn(2);
                             setTaskPage(2);

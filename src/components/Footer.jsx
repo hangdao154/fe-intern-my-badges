@@ -14,9 +14,9 @@ export default function Footer() {
             </div>
 
             <div className="right">
-                <img className='lg-icon' src='public/social-icons/x-logo-black.png'/>
-                <img className='lg-icon' src='public/social-icons/tele-logo-black.png'/>
-                <img className='lg-icon' src='public/social-icons/discord-logo-black.png'/>
+                <img className='lg-icon' src='public/social-icons/x-logo-black.png' />
+                <img className='lg-icon' src='public/social-icons/tele-logo-black.png' />
+                <img className='lg-icon' src='public/social-icons/discord-logo-black.png' />
             </div>
         </footer>
     )

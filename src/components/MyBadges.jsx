@@ -5,11 +5,11 @@ import BadgeDetails from './BadgeDetails';
 
 export default function MyBadges(props) {
     const { data, handleSort, onClick } = props;
-    
+
     const [currentPage, setCurrentPage] = useState(1);
     const [popupState, setPopupState] = useState("false");
     const [displayedPopupBadge, setDisplayedPopupBade] = useState(undefined);
-    
+
     const ITEMS_PER_PAGE = 12;
     const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -23,28 +23,28 @@ export default function MyBadges(props) {
     function handleChangePopupState(state) {
         setPopupState(state);
     }
-    
+
     function getCurrentItems(data) {
         const endIndex = startIndex + ITEMS_PER_PAGE;
         return data.slice(startIndex, endIndex);
     }
-    
+
     const handleChangePage = (page) => {
         setCurrentPage(page);
     }
-    
+
     const handlePreviousPage = () => {
         if (currentPage > 1) {
-        setCurrentPage(currentPage - 1);
+            setCurrentPage(currentPage - 1);
         }
     };
-    
+
     const handleNextPage = (totalPages) => {
         if (currentPage < totalPages) {
-        setCurrentPage(currentPage + 1);
+            setCurrentPage(currentPage + 1);
         }
     };
-    
+
     let index = startIndex;
 
     return (
@@ -56,7 +56,7 @@ export default function MyBadges(props) {
                 <select className="selector">
                     <option>Status</option>
                 </select>
-                <img className="md-icon" src="public/refresh-icon.png"/>
+                <img className="md-icon" src="public/refresh-icon.png" />
             </div>
 
             <div className="badges-container">
@@ -65,9 +65,9 @@ export default function MyBadges(props) {
                     </BadgeItem>
                 ))}
             </div>
-            
+
             <BadgeDetails popupState={popupState} data={displayedPopupBadge} handleChangePopupState={handleChangePopupState}></BadgeDetails>
-            
+
             <div className={popupState === "true" ? "overlay-shown" : "overlay-hidden"}></div>
 
             <div className="pagination-container badge">
