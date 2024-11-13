@@ -9,7 +9,7 @@ export default function BadgeDetails(props) {
         const [visibleContent, setVisibleContent] = useState(data.description);
 
         return (
-            <div className="container badge-details" k>
+            <div className="container badge-details">
                 <img src="public/x-button.png" className="escape-btn sm-icon" onClick={() => handleChangePopupState("false")} />
 
                 <img src={data.badgeImg} />
